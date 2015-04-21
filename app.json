@@ -15,7 +15,10 @@
       "description": "The password for your JIRA user."
     },
     "JIRA_URL": {
-      "description": "The full URL to your JIRA API endpoint (e.g. https://<my_subdomain>.atlassian.net/rest/api/2/issue/)"
+      "description": "The full URL to your JIRA API endpoint (e.g. http://<my_subdomain>/rest/api/2/issue/)"
+    },
+     "JIRA_SUBDOMAIN": {
+      "description": "The name of your JIRA subdomain, as it appears in the URL."
     },
     "JIRA_PROJECT": {
       "description": "The project that you would like the ticket created in JIRA.  This field is the prefix for the project (e.g. 'SUP')"
