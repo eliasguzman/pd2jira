@@ -2,7 +2,7 @@
 $messages = json_decode($HTTP_RAW_POST_DATA);
 
 $jira_url = getenv('JIRA_URL');
-#$jira_subdomain = getenv('JIRA_SUBDOMAIN');
+$jira_subdomain = getenv('JIRA_SUBDOMAIN');
 $jira_username = getenv('JIRA_USERNAME');
 $jira_password = getenv('JIRA_PASSWORD');
 $jira_project = getenv('JIRA_PROJECT');
