@@ -1,10 +1,11 @@
 {
   "name": "PagerDuty to JIRA Connector",
   "description": "Create JIRA tickets when a PagerDuty incident has been created.",
-  "repository": "https://github.com/ryanhoskin/pd2jira",
+  "repository": "https://github.com/eliasguzman/pd2jira",
   "keywords": [
     "pagerduty",
-    "JIRA"
+    "JIRA",
+    "on-prem"
   ],
   "env": {
     "JIRA_USERNAME": {
@@ -13,8 +14,8 @@
     "JIRA_PASSWORD": {
       "description": "The password for your JIRA user."
     },
-    "JIRA_SUBDOMAIN": {
-      "description": "The name of your JIRA subdomain, as it appears in the URL."
+    "JIRA_URL": {
+      "description": "The full URL to your JIRA API endpoint (e.g. https://<my_subdomain>.atlassian.net/rest/api/2/issue/)"
     },
     "JIRA_PROJECT": {
       "description": "The project that you would like the ticket created in JIRA.  This field is the prefix for the project (e.g. 'SUP')"

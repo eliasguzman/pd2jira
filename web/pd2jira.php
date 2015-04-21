@@ -1,7 +1,7 @@
 <?php
 $messages = json_decode($HTTP_RAW_POST_DATA);
 
-$jira_subdomain = getenv('JIRA_SUBDOMAIN');
+$jira_url = getenv('JIRA_URL');
 $jira_username = getenv('JIRA_USERNAME');
 $jira_password = getenv('JIRA_PASSWORD');
 $jira_project = getenv('JIRA_PROJECT');
@@ -27,7 +27,7 @@ if ($messages) foreach ($messages->messages as $webhook) {
       $verb = "triggered";
 
       //Create the JIRA ticket when an incident has been triggered
-      $url = "https://$jira_subdomain.atlassian.net/rest/api/2/issue/";
+      $url = $jira_url;
 
       $data = array('fields'=>array('project'=>array('key'=>"$jira_project"),'summary'=>"$summary",'description'=>"A new PagerDuty ticket as been created.  Please go to $ticket_url to view it.", 'issuetype'=>array('name'=>"$jira_issue_type")));
       $data_json = json_encode($data);
