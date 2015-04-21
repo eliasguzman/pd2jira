@@ -2,12 +2,14 @@
 $messages = json_decode($HTTP_RAW_POST_DATA);
 
 $jira_url = getenv('JIRA_URL');
+$jira_subdomain = getenv('JIRA_SUBDOMAIN');
 $jira_username = getenv('JIRA_USERNAME');
 $jira_password = getenv('JIRA_PASSWORD');
 $jira_project = getenv('JIRA_PROJECT');
 $jira_issue_type = getenv('JIRA_ISSUE_TYPE');
 $pd_subdomain = getenv('PAGERDUTY_SUBDOMAIN');
 $pd_api_token = getenv('PAGERDUTY_API_TOKEN');
+
 
 if ($messages) foreach ($messages->messages as $webhook) {
   $webhook_type = $webhook->type;
@@ -41,7 +43,7 @@ if ($messages) foreach ($messages->messages as $webhook) {
       if ($status_code == "201") {
         //Update the PagerDuty ticket with the JIRA ticket information.
         $url = "https://$pd_subdomain.pagerduty.com/api/v1/incidents/$incident_id/notes";
-        $data = array('note'=>array('content'=>"JIRA ticket $response_key has been created.  You can view it at https://$jira_subdomain.atlassian.net/browse/$response_key."),'requester_id'=>"$pd_requester_id");
+        $data = array('note'=>array('content'=>"JIRA ticket $response_key has been created.  You can view it at http://$jira_subdomain./browse/$response_key."),'requester_id'=>"$pd_requester_id");
         $data_json = json_encode($data);
         http_request($url, $data_json, "POST", "token", $pd_username, $pd_api_token);
       }
