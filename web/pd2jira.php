@@ -42,7 +42,7 @@ if ($messages) foreach ($messages->messages as $webhook) {
       if ($status_code == "201") {
         //Update the PagerDuty ticket with the JIRA ticket information.
         $url = "https://$pd_subdomain.pagerduty.com/api/v1/incidents/$incident_id/notes";
-        $data = array('note'=>array('content'=>"JIRA ticket $response_key has been created.  You can view it at http://$jira_url/browse/$response_key."),'requester_id'=>"$pd_requester_id");
+        $data = array('note'=>array('content'=>"JIRA ticket $response_key has been created.  You can view it at $jira_url/browse/$response_key."),'requester_id'=>"$pd_requester_id");
         $data_json = json_encode($data);
         http_request($url, $data_json, "POST", "token", $pd_username, $pd_api_token);
       }
